@@ -1,0 +1,128 @@
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #a8edea, #fed6e3);
+  font-family: 'Patrick Hand', cursive;
+}
+
+/* ===== GAME CONTAINER ===== */
+#game {
+  position: relative;
+  width: 400px;
+  height: 600px;
+  background: linear-gradient(to bottom, #87CEEB, #E0F7FA);
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== BIRD ===== */
+#bird {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23FFD700"/><circle cx="70" cy="40" r="8" fill="%23000"/><path d="M30 50 Q50 60 70 50" stroke="%23000" stroke-width="3" fill="none"/></svg>') no-repeat;
+  top: 50%;
+  left: 50px;
+  z-index: 10;
+  transition: transform 0.1s;
+}
+
+#bird.flap {
+  transform: rotate(-20deg);
+}
+
+/* ===== PIPES ===== */
+.pipe {
+  position: absolute;
+  width: 60px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23FF9EB5"/><rect y="90" width="100" height="10" fill="%2387CEEB"/></svg>');
+  border-radius: 10px 10px 0 0;
+}
+
+.pipe.bottom {
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%2390E0EF"/><rect y="0" width="100" height="10" fill="%2387CEEB"/></svg>');
+  border-radius: 0 0 10px 10px;
+}
+
+/* ===== CLOUDS ===== */
+.cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: float 20s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateX(400px); }
+  100% { transform: translateX(-100px); }
+}
+
+/* ===== SCORES ===== */
+#score, #high-score {
+  position: absolute;
+  left: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #FF6B6B;
+  text-shadow: 1px 1px 2px white;
+  z-index: 5;
+}
+
+#score {
+  top: 20px;
+}
+
+#high-score {
+  top: 50px;
+}
+
+/* ===== GAME OVER SCREEN ===== */
+#game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: none;
+  z-index: 100;
+  width: 70%;
+}
+
+#game-over h1 {
+  color: #FF6B6B;
+  margin: 0 0 10px 0;
+  font-size: 28px;
+}
+
+#game-over p {
+  color: #555;
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+button {
+  background: #FFD166;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 20px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #FF9EB5;
+  transform: scale(1.05);
+}
